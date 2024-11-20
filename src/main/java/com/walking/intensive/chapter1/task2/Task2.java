@@ -1,5 +1,4 @@
 package com.walking.intensive.chapter1.task2;
-
 /**
  * Реализуйте метод getFlatLocation(), который будет принимать параметрами следующие данные:
  * <ul>
@@ -33,12 +32,35 @@ package com.walking.intensive.chapter1.task2;
  */
 public class Task2 {
     public static void main(String[] args) {
-//        Для собственных проверок можете делать любые изменения в этом методе
+        System.out.println(getFlatLocation(10, 3, 40));
     }
 
     static String getFlatLocation(int floorAmount, int entranceAmount, int flatNumber) {
-        //        Место для вашего кода
+        int flatsPerFloor = 4;
+        int flatsPerEntrance = floorAmount * flatsPerFloor;
+        int totalFlats = flatsPerEntrance * entranceAmount;
 
-        return null; // Заглушка. При реализации - удалить
+        // Проверка на некорректные входные данные
+        if (floorAmount <= 0 || entranceAmount <= 0 || flatNumber <= 0) {
+            return "Некорректные входные данные";
+        }
+
+        // Проверка на существование квартиры
+        if (flatNumber > totalFlats) {
+            return "Такой квартиры не существует";
+        }
+
+        // Вычисление подъезда
+        int entrance = (flatNumber - 1) / flatsPerEntrance + 1;
+
+        // Вычисление этажа
+        int floor = ((flatNumber - 1) % flatsPerEntrance) / flatsPerFloor + 1;
+
+        // Вычисление расположения квартиры
+        int flatPosition = (flatNumber - 1) % flatsPerFloor + 1;
+        String sideOfLift = (flatPosition <= 2) ? "слева от лифта" : "справа от лифта";
+        String direction = (flatPosition % 2 == 1) ? "влево" : "вправо";
+
+        return String.format("%d кв - %d подъезд, %d этаж, %s, %s", flatNumber, entrance, floor, sideOfLift, direction);
     }
 }
