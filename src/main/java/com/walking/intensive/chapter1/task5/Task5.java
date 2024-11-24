@@ -15,7 +15,8 @@ public class Task5 {
 //        System.out.println(getAreaByHeron(12, 13, 5));
 //        System.out.println(Arrays.toString(getHeights(17, 1, 1)));
 //        System.out.println(Arrays.toString(getMedians(12, 13, 5)));
-        System.out.println(Arrays.toString(getBisectors(12, 13, 5)));
+//        System.out.println(Arrays.toString(getBisectors(12, 13, 5)));
+        System.out.println(Arrays.toString(getAngles(3, 4, 5)));
     }
 
     /**
@@ -128,9 +129,21 @@ public class Task5 {
      * <p>Если входные данные некорректны - метод должен возвращать пустой массив нулевой длины.
      */
     static double[] getAngles(double a, double b, double c) {
-        //        Место для вашего кода
+        // Проверка на корректность входных данных (+ проверка на существование треугольника)
+        if (a <= 0 || b <= 0 || c <= 0 || a + b <= c || a + c <= b || b + c <= a) {
+            return new double[0];
+        }
 
-        return null; // Заглушка. При реализации - удалить
+        // Вычисление углов
+        double angleA = Math.toDegrees(Math.acos((Math.pow(b, 2) + Math.pow(c, 2) - Math.pow(a, 2)) / (2 * b * c)));
+        double angleB = Math.toDegrees(Math.acos((Math.pow(a, 2) + Math.pow(c, 2) - Math.pow(b, 2)) / (2 * a * c)));
+        double angleC = Math.toDegrees(Math.acos((Math.pow(a, 2) + Math.pow(b, 2) - Math.pow(c, 2)) / (2 * a * b)));
+
+        // Массив с углами треугольника
+        double[] angles = new double[]{angleA, angleB, angleC};
+        Arrays.sort(angles);
+
+        return angles;
     }
 
     /**
