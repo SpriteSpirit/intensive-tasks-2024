@@ -14,7 +14,8 @@ public class Task5 {
     public static void main(String[] args) {
 //        System.out.println(getAreaByHeron(12, 13, 5));
 //        System.out.println(Arrays.toString(getHeights(17, 1, 1)));
-        System.out.println(Arrays.toString(getMedians(12, 13, 5)));
+//        System.out.println(Arrays.toString(getMedians(12, 13, 5)));
+        System.out.println(Arrays.toString(getBisectors(12, 13, 5)));
     }
 
     /**
@@ -80,7 +81,7 @@ public class Task5 {
         }
 
         // Вычисление медианы
-        double ma = Math.sqrt(2 * Math.pow(b, 2) + 2 * Math.pow(c, 2) - Math.pow(a, 2)) / 2;
+        double ma = Math.sqrt(2 * (Math.pow(b, 2) + Math.pow(c, 2)) - Math.pow(a, 2)) / 2;
         double mb = Math.sqrt(2 * (Math.pow(a, 2) + Math.pow(c, 2)) - Math.pow(b, 2)) / 2;
         double mc = Math.sqrt(2 * (Math.pow(a, 2) + Math.pow(b, 2)) - Math.pow(c, 2)) / 2;
 
@@ -99,9 +100,24 @@ public class Task5 {
      * <p>Если входные данные некорректны - метод должен возвращать пустой массив нулевой длины.
      */
     static double[] getBisectors(double a, double b, double c) {
-        //        Место для вашего кода
+        // Проверка на корректность входных данных (+ проверка на существование треугольника)
+        if (a <= 0 || b <= 0 || c <= 0 || a + b <= c || a + c <= b || b + c <= a) {
+            return new double[0];
+        }
 
-        return null; // Заглушка. При реализации - удалить
+        // Полупериметр треугольника
+        double p = (a + b + c)/2;
+
+        // Формулы для вычисления биссектрис
+        double la = (2 * Math.sqrt(b * c * p * (p - a))) / (b + c);
+        double lb = (2 * Math.sqrt(a * c * p * (p - b))) / (a + c);
+        double lc = (2 * Math.sqrt(a * b * p * (p - c))) / (a + b);
+
+        // Массив биссектрис
+        double[] bisectors = new double[]{la, lb, lc};
+        Arrays.sort(bisectors);
+
+        return bisectors;
     }
 
     /**
