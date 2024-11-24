@@ -13,7 +13,8 @@ import java.util.Arrays;
 public class Task5 {
     public static void main(String[] args) {
 //        System.out.println(getAreaByHeron(12, 13, 5));
-        System.out.println(Arrays.toString(getHeights(17, 1, 1)));
+//        System.out.println(Arrays.toString(getHeights(17, 1, 1)));
+        System.out.println(Arrays.toString(getMedians(12, 13, 5)));
     }
 
     /**
@@ -26,13 +27,13 @@ public class Task5 {
      * <p>Если входные данные некорректны - метод должен возвращать -1.
      */
     static double getAreaByHeron(double a, double b, double c) {
-        // Полупериметр треугольника
-        double p = (a + b + c)/2;
-
-        // Проверка на корректность входных данных
+        // Проверка на корректность входных данных (+ проверка на существование треугольника)
         if (a <= 0 || b <= 0 || c <= 0 || a + b <= c || a + c <= b || b + c <= a) {
             return -1; // Возвращаем -1, если данные некорректны
         }
+
+        // Полупериметр треугольника
+        double p = (a + b + c)/2;
 
         return Math.sqrt(p * (p - a) * (p - b) * (p - c));
     }
@@ -73,9 +74,21 @@ public class Task5 {
      * <p>Если входные данные некорректны - метод должен возвращать пустой массив нулевой длины.
      */
     static double[] getMedians(double a, double b, double c) {
-        //        Место для вашего кода
+        // Проверка на корректность входных данных (+ проверка на существование треугольника)
+        if (a <= 0 || b <= 0 || c <= 0 || a + b <= c || a + c <= b || b + c <= a) {
+            return new double[]{};
+        }
 
-        return null; // Заглушка. При реализации - удалить
+        // Вычисление медианы
+        double ma = Math.sqrt(2 * Math.pow(b, 2) + 2 * Math.pow(c, 2) - Math.pow(a, 2)) / 2;
+        double mb = Math.sqrt(2 * (Math.pow(a, 2) + Math.pow(c, 2)) - Math.pow(b, 2)) / 2;
+        double mc = Math.sqrt(2 * (Math.pow(a, 2) + Math.pow(b, 2)) - Math.pow(c, 2)) / 2;
+
+        // Массив медиан
+        double[] medians = new double[]{ma, mb, mc};
+        Arrays.sort(medians);
+
+        return medians;
     }
 
     /**
