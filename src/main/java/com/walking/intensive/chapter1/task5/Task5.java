@@ -12,12 +12,14 @@ import java.util.Arrays;
  */
 public class Task5 {
     public static void main(String[] args) {
-//        System.out.println(getAreaByHeron(12, 13, 5));
-//        System.out.println(Arrays.toString(getHeights(17, 1, 1)));
-//        System.out.println(Arrays.toString(getMedians(12, 13, 5)));
-//        System.out.println(Arrays.toString(getBisectors(12, 13, 5)));
         System.out.println(Arrays.toString(getAngles(3, 4, 5)));
     }
+
+    static boolean isValidTriangle(double a, double b, double c) {
+        // Проверка на корректность входных данных (+ проверка на существование треугольника)
+        return a > 0 && b > 0 && c > 0 && a + b > c && a + c > b && b + c > a;
+    }
+
 
     /**
      * Частным случаем Tеоремы Брахмагупты является формула Герона.
@@ -29,13 +31,12 @@ public class Task5 {
      * <p>Если входные данные некорректны - метод должен возвращать -1.
      */
     static double getAreaByHeron(double a, double b, double c) {
-        // Проверка на корректность входных данных (+ проверка на существование треугольника)
-        if (a <= 0 || b <= 0 || c <= 0 || a + b <= c || a + c <= b || b + c <= a) {
-            return -1; // Возвращаем -1, если данные некорректны
+        if (isValidTriangle(a, b, c)) {
+            return -1;
         }
 
         // Полупериметр треугольника
-        double p = (a + b + c)/2;
+        double p = (a + b + c) / 2;
 
         return Math.sqrt(p * (p - a) * (p - b) * (p - c));
     }
@@ -48,8 +49,7 @@ public class Task5 {
      * <p>Если входные данные некорректны - метод должен возвращать пустой массив нулевой длины.
      */
     static double[] getHeights(double a, double b, double c) {
-        // Проверка на корректность входных данных (+ проверка на существование треугольника)
-        if (a <= 0 || b <= 0 || c <= 0 || a + b <= c || a + c <= b || b + c <= a) {
+        if (isValidTriangle(a, b, c)) {
             return new double[0];
         }
 
@@ -76,8 +76,7 @@ public class Task5 {
      * <p>Если входные данные некорректны - метод должен возвращать пустой массив нулевой длины.
      */
     static double[] getMedians(double a, double b, double c) {
-        // Проверка на корректность входных данных (+ проверка на существование треугольника)
-        if (a <= 0 || b <= 0 || c <= 0 || a + b <= c || a + c <= b || b + c <= a) {
+        if (isValidTriangle(a, b, c)) {
             return new double[0];
         }
 
@@ -101,8 +100,7 @@ public class Task5 {
      * <p>Если входные данные некорректны - метод должен возвращать пустой массив нулевой длины.
      */
     static double[] getBisectors(double a, double b, double c) {
-        // Проверка на корректность входных данных (+ проверка на существование треугольника)
-        if (a <= 0 || b <= 0 || c <= 0 || a + b <= c || a + c <= b || b + c <= a) {
+        if (isValidTriangle(a, b, c)) {
             return new double[0];
         }
 
@@ -129,8 +127,7 @@ public class Task5 {
      * <p>Если входные данные некорректны - метод должен возвращать пустой массив нулевой длины.
      */
     static double[] getAngles(double a, double b, double c) {
-        // Проверка на корректность входных данных (+ проверка на существование треугольника)
-        if (a <= 0 || b <= 0 || c <= 0 || a + b <= c || a + c <= b || b + c <= a) {
+        if (isValidTriangle(a, b, c)) {
             return new double[0];
         }
 
@@ -154,8 +151,7 @@ public class Task5 {
      * <p>Если входные данные некорректны - метод должен возвращать -1.
      */
     static double getInscribedCircleRadius(double a, double b, double c) {
-        // Проверка на корректность входных данных (+ проверка на существование треугольника)
-        if (a <= 0 || b <= 0 || c <= 0 || a + b <= c || a + c <= b || b + c <= a) {
+        if (isValidTriangle(a, b, c)) {
             return -1;
         }
 
@@ -173,8 +169,7 @@ public class Task5 {
      * <p>Если входные данные некорректны - метод должен возвращать -1.
      */
     static double getCircumradius(double a, double b, double c) {
-        // Проверка на корректность входных данных (+ проверка на существование треугольника)
-        if (a <= 0 || b <= 0 || c <= 0 || a + b <= c || a + c <= b || b + c <= a) {
+        if (isValidTriangle(a, b, c)) {
             return -1;
         }
 
@@ -198,8 +193,7 @@ public class Task5 {
      * <p>Если входные данные некорректны - метод должен возвращать -1.
      */
     static double getAreaAdvanced(double a, double b, double c) {
-        // Проверка на корректность входных данных (+ проверка на существование треугольника)
-        if (a <= 0 || b <= 0 || c <= 0 || a + b <= c || a + c <= b || b + c <= a) {
+        if (isValidTriangle(a, b, c)) {
             return -1;
         }
 
