@@ -76,7 +76,7 @@ public class Task5 {
     static double[] getMedians(double a, double b, double c) {
         // Проверка на корректность входных данных (+ проверка на существование треугольника)
         if (a <= 0 || b <= 0 || c <= 0 || a + b <= c || a + c <= b || b + c <= a) {
-            return new double[]{};
+            return new double[0];
         }
 
         // Вычисление медианы
