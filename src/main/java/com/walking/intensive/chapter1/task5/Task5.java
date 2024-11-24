@@ -178,9 +178,6 @@ public class Task5 {
             return -1;
         }
 
-        // Полупериметр треугольника
-        double p = (a + b + c)/2;
-
         // Площадь треугольника с использованием метода Герона
         double s = getAreaByHeron(a, b, c);
 
@@ -201,8 +198,17 @@ public class Task5 {
      * <p>Если входные данные некорректны - метод должен возвращать -1.
      */
     static double getAreaAdvanced(double a, double b, double c) {
-        //        Место для вашего кода
+        // Проверка на корректность входных данных (+ проверка на существование треугольника)
+        if (a <= 0 || b <= 0 || c <= 0 || a + b <= c || a + c <= b || b + c <= a) {
+            return -1;
+        }
 
-        return 0; // Заглушка. При реализации - удалить
+        // Косинус угла напротив стороны a с использованием теоремы косинусов
+        double cosAlpha = (Math.pow(b, 2) + Math.pow(c, 2) - Math.pow(a, 2)) / (2 * b * c);
+
+        // Синус угла с использованием тригонометрического тождества
+        double sinAlpha = Math.sqrt(1 - Math.pow(cosAlpha, 2));
+
+        return 0.5 * b * c * sinAlpha;
     }
 }
