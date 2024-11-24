@@ -34,27 +34,35 @@ public class Task4 {
     }
 
     static String solveEquation(double a, double b, double c) {
-        if (a != 0) {
+        String result;
+
+        if (a == 0) {
+            // Линейное уравнение bx + c = 0
+            if (b != 0) {
+                double x = -c / b;
+                result = "Количество решений: 1. Корень: " + (x != 0 ? x : Math.abs(x));
+            } else if (c == 0) {
+                result = "Бесконечное множество решений.";
+            } else {
+                result = "Количество решений: 0.";
+            }
+        } else {
+            // Квадратное уравнение ax^2 + bx + c = 0
             double d = Math.pow(b, 2) - 4 * a * c;
 
             if (d < 0) {
-                return "Количество решений: 0.";
+                result = "Количество решений: 0.";
             } else if (d == 0) {
                 double x = -b / (2 * a);
-                return "Количество решений: 1. Корень: " +  (x != 0 ? x : Math.abs(x));
+                result = "Количество решений: 1. Корень: " + (x != 0 ? x : Math.abs(x));
             } else {
-                double x1 = (-b + Math.sqrt(d)) / (2 * a);
-                double x2 = (-b - Math.sqrt(d)) / (2 * a);
-                return "Количество решений: 2. Корни: " + Math.min(x1, x2) + ";" + Math.max(x1, x2);
+                double sqrtD = Math.sqrt(d);
+                double x1 = (-b + sqrtD) / (2 * a);
+                double x2 = (-b - sqrtD) / (2 * a);
+                result = "Количество решений: 2. Корни: " + Math.min(x1, x2) + ";" + Math.max(x1, x2);
             }
-        } else if (b != 0) {
-            double x = -c / b;
-            return "Количество решений: 1. Корень: " +  (x != 0 ? x : Math.abs(x));
-        } else if (c == 0) {
-            return "Бесконечное множество решений.";
-        } else {
-            return "Количество решений: 0.";
         }
-    }
 
+        return result;
+    }
 }
