@@ -154,9 +154,15 @@ public class Task5 {
      * <p>Если входные данные некорректны - метод должен возвращать -1.
      */
     static double getInscribedCircleRadius(double a, double b, double c) {
-        //        Место для вашего кода
+        // Проверка на корректность входных данных (+ проверка на существование треугольника)
+        if (a <= 0 || b <= 0 || c <= 0 || a + b <= c || a + c <= b || b + c <= a) {
+            return -1;
+        }
 
-        return 0; // Заглушка. При реализации - удалить
+        // Площадь треугольника
+        double s = getAreaByHeron(a, b, c);
+
+        return (2 * s) / (a + b + c);
     }
 
     /**
