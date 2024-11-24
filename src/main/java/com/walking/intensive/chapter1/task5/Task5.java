@@ -31,7 +31,7 @@ public class Task5 {
      * <p>Если входные данные некорректны - метод должен возвращать -1.
      */
     static double getAreaByHeron(double a, double b, double c) {
-        if (isValidTriangle(a, b, c)) {
+        if (!isValidTriangle(a, b, c)) {
             return -1;
         }
 
@@ -49,7 +49,7 @@ public class Task5 {
      * <p>Если входные данные некорректны - метод должен возвращать пустой массив нулевой длины.
      */
     static double[] getHeights(double a, double b, double c) {
-        if (isValidTriangle(a, b, c)) {
+        if (!isValidTriangle(a, b, c)) {
             return new double[0];
         }
 
@@ -76,7 +76,7 @@ public class Task5 {
      * <p>Если входные данные некорректны - метод должен возвращать пустой массив нулевой длины.
      */
     static double[] getMedians(double a, double b, double c) {
-        if (isValidTriangle(a, b, c)) {
+        if (!isValidTriangle(a, b, c)) {
             return new double[0];
         }
 
@@ -100,7 +100,7 @@ public class Task5 {
      * <p>Если входные данные некорректны - метод должен возвращать пустой массив нулевой длины.
      */
     static double[] getBisectors(double a, double b, double c) {
-        if (isValidTriangle(a, b, c)) {
+        if (!isValidTriangle(a, b, c)) {
             return new double[0];
         }
 
@@ -127,7 +127,7 @@ public class Task5 {
      * <p>Если входные данные некорректны - метод должен возвращать пустой массив нулевой длины.
      */
     static double[] getAngles(double a, double b, double c) {
-        if (isValidTriangle(a, b, c)) {
+        if (!isValidTriangle(a, b, c)) {
             return new double[0];
         }
 
@@ -151,7 +151,7 @@ public class Task5 {
      * <p>Если входные данные некорректны - метод должен возвращать -1.
      */
     static double getInscribedCircleRadius(double a, double b, double c) {
-        if (isValidTriangle(a, b, c)) {
+        if (!isValidTriangle(a, b, c)) {
             return -1;
         }
 
@@ -169,7 +169,7 @@ public class Task5 {
      * <p>Если входные данные некорректны - метод должен возвращать -1.
      */
     static double getCircumradius(double a, double b, double c) {
-        if (isValidTriangle(a, b, c)) {
+        if (!isValidTriangle(a, b, c)) {
             return -1;
         }
 
@@ -193,7 +193,7 @@ public class Task5 {
      * <p>Если входные данные некорректны - метод должен возвращать -1.
      */
     static double getAreaAdvanced(double a, double b, double c) {
-        if (isValidTriangle(a, b, c)) {
+        if (!isValidTriangle(a, b, c)) {
             return -1;
         }
 
