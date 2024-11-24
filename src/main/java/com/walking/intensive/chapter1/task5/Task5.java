@@ -1,5 +1,7 @@
 package com.walking.intensive.chapter1.task5;
 
+import java.util.Arrays;
+
 /**
  * Задача поиска площади, величин углов, длин высот, биссектрис, медиан, радиусов вписанной и описанной вокруг
  * треугольника окружностей является центральной в Геометрии.
@@ -10,7 +12,8 @@ package com.walking.intensive.chapter1.task5;
  */
 public class Task5 {
     public static void main(String[] args) {
-        System.out.println(getAreaByHeron(12, 13, 5));
+//        System.out.println(getAreaByHeron(12, 13, 5));
+        System.out.println(Arrays.toString(getHeights(17, 1, 1)));
     }
 
     /**
@@ -42,9 +45,24 @@ public class Task5 {
      * <p>Если входные данные некорректны - метод должен возвращать пустой массив нулевой длины.
      */
     static double[] getHeights(double a, double b, double c) {
-        //        Место для вашего кода
+        // Проверка на корректность входных данных (+ проверка на существование треугольника)
+        if (a <= 0 || b <= 0 || c <= 0 || a + b <= c || a + c <= b || b + c <= a) {
+            return new double[]{};
+        }
 
-        return null; // Заглушка. При реализации - удалить
+        // Площадь треугольника
+        double s = getAreaByHeron(a, b, c);
+
+        // Вычисление высоты
+        double ha = 2 * s/a;
+        double hb = 2 * s/b;
+        double hc = 2 * s/c;
+
+        // Массив высот
+        double[] heights = new double[]{ha, hb, hc};
+        Arrays.sort(heights);
+
+        return heights;
     }
 
     /**
