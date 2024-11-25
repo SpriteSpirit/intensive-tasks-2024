@@ -57,9 +57,9 @@ public class Task5 {
         double s = getAreaByHeron(a, b, c);
 
         // Вычисление высоты
-        double ha = 2 * s/a;
-        double hb = 2 * s/b;
-        double hc = 2 * s/c;
+        double ha = 2 * s / a;
+        double hb = 2 * s / b;
+        double hc = 2 * s / c;
 
         // Массив высот
         double[] heights = new double[]{ha, hb, hc};
@@ -105,7 +105,7 @@ public class Task5 {
         }
 
         // Полупериметр треугольника
-        double p = (a + b + c)/2;
+        double p = (a + b + c) / 2;
 
         // Формулы для вычисления биссектрис
         double la = (2 * Math.sqrt(b * c * p * (p - a))) / (b + c);
