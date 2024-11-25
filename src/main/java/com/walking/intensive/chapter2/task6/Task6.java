@@ -8,8 +8,14 @@ package com.walking.intensive.chapter2.task6;
  */
 public class Task6 {
     public static void main(String[] args) {
-//        Для собственных проверок можете делать любые изменения в этом методе
+        // Тесты getLcm(), getGcd() пройдены
     }
+
+    static boolean isInvalid(int m, int n) {
+        // Проверка на невалидные входные данные: оба числа должны быть положительными
+        return (m <= 0 || n <= 0);
+    }
+
 
     /**
      * Реализуйте метод, который будет возвращать НОК для чисел, переданных параметрами.
@@ -19,13 +25,13 @@ public class Task6 {
      * <p>Если входные данные некорректны - метод должен возвращать -1.
      */
     static int getLcm(int m, int n) {
-//        // НОК = ab / НОД(a, b),
-//        if (m == 0 || n == 0) {
-//            return 0;
-//        }
-//
-//        return (m * n) / getGcd(m, n);
-        return 0;
+
+        if (isInvalid(m, n)) {
+            return -1;
+        }
+
+        // НОК = ab / НОД(a, b),
+        return (m * n) / getGcd(m, n);
     }
 
     /**
@@ -36,8 +42,8 @@ public class Task6 {
      * <p>Если входные данные некорректны - метод должен возвращать -1.
      */
     static int getGcd(int m, int n) {
-        // Проверка на невалидные входные данные: оба числа должны быть положительными
-        if (m <= 0 || n <= 0) {
+
+        if (isInvalid(m, n)) {
             return -1;
         }
 
