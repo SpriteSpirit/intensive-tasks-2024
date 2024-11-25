@@ -8,7 +8,7 @@ package com.walking.intensive.chapter2.task6;
  */
 public class Task6 {
     public static void main(String[] args) {
-        // Тесты getLcm(), getGcd() пройдены
+        // Тесты getLcm(), getGcd(), getGcdByEuclideanAlgorithm() пройдены
     }
 
     static boolean isInvalid(int m, int n) {
@@ -30,8 +30,8 @@ public class Task6 {
             return -1;
         }
 
-        // НОК = ab / НОД(a, b),
-        return (m * n) / getGcd(m, n);
+        // НОК = ab / НОД(a, b) + защита от переполнения при делении больших чисел
+        return (m / getGcdByEuclideanAlgorithm(m, n)) * n;
     }
 
     /**
@@ -42,7 +42,21 @@ public class Task6 {
      * <p>Если входные данные некорректны - метод должен возвращать -1.
      */
     static int getGcd(int m, int n) {
-        return 0;
+        System.out.println("getGcd(" + m + ", " + n + ")"); // Отладочный вывод
+
+        if (isInvalid(m, n)) {
+            return -1;
+        }
+
+        while (m > 0 && n > 0) {
+            if (m >= n) {
+                m = m % n;
+            } else {
+                n = n % m;
+            }
+        }
+
+        return Math.max(m, n);
     }
 
     /**
@@ -54,6 +68,8 @@ public class Task6 {
      * <p>Если входные данные некорректны - метод должен возвращать -1.
      */
     static int getGcdByEuclideanAlgorithm(int m, int n) {
+        System.out.println("getGcdByEuclideanAlgorithm(" + m + ", " + n + ")");
+
         if (isInvalid(m, n)) {
             return -1;
         }
