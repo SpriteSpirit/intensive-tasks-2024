@@ -31,7 +31,7 @@ public class Task6 {
         }
 
         // НОК = ab / НОД(a, b) + защита от переполнения при делении больших чисел
-        return (m / getGcdByEuclideanAlgorithm(m, n)) * n;
+        return (m / getGcd(m, n)) * n;
     }
 
     /**
