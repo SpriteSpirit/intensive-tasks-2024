@@ -8,11 +8,10 @@ package com.walking.intensive.chapter2.task6;
  */
 public class Task6 {
     public static void main(String[] args) {
-        // Тесты getLcm(), getGcd(), getGcdByEuclideanAlgorithm() пройдены
+
     }
 
     static boolean isInvalid(int m, int n) {
-        // Проверка на невалидные входные данные: оба числа должны быть положительными
         return (m <= 0 || n <= 0);
     }
 
@@ -30,7 +29,7 @@ public class Task6 {
             return -1;
         }
 
-        // НОК = ab / НОД(a, b) + защита от переполнения при делении больших чисел
+        // НОК = ab / НОД(a, b)
         return (m / getGcd(m, n)) * n;
     }
 
@@ -42,21 +41,17 @@ public class Task6 {
      * <p>Если входные данные некорректны - метод должен возвращать -1.
      */
     static int getGcd(int m, int n) {
-        System.out.println("getGcd(" + m + ", " + n + ")"); // Отладочный вывод
+        System.out.println("getGcd(" + m + ", " + n + ")");
 
-        if (isInvalid(m, n)) {
+        if (m <= 0 || n < 0) {
             return -1;
         }
 
-        while (m > 0 && n > 0) {
-            if (m >= n) {
-                m = m % n;
-            } else {
-                n = n % m;
-            }
+        if (n == 0) {
+            return m;
         }
 
-        return Math.max(m, n);
+        return getGcd(n, m % n);
     }
 
     /**
@@ -74,7 +69,6 @@ public class Task6 {
             return -1;
         }
 
-        // Алгоритм Евклида для нахождения НОД
         while (n != 0) {
             int temp = n;
             n = m % n;
