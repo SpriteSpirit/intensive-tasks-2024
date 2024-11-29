@@ -8,13 +8,8 @@ package com.walking.intensive.chapter2.task6;
  */
 public class Task6 {
     public static void main(String[] args) {
-
+        // проверка через тесты
     }
-
-    static boolean isInvalid(int m, int n) {
-        return (m <= 0 || n <= 0);
-    }
-
 
     /**
      * Реализуйте метод, который будет возвращать НОК для чисел, переданных параметрами.
@@ -29,8 +24,14 @@ public class Task6 {
             return -1;
         }
 
-        // НОК = ab / НОД(a, b)
-        return (m / getGcd(m, n)) * n;
+        int larger = Math.max(m, n);
+        int smaller = Math.min(m, n);
+        int lcm = larger;
+
+        while (lcm % smaller != 0) {
+            lcm += larger;
+        }
+        return lcm;
     }
 
     /**
@@ -76,5 +77,9 @@ public class Task6 {
         }
 
         return m;
+    }
+
+    static boolean isInvalid(int m, int n) {
+        return (m <= 0 || n <= 0);
     }
 }
